@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 
@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                         contentScale = ContentScale.Crop
 
                         )
-                        Cardfun()
+                        Card()
                         
                         ButtonAction(applicationContext)
                     }
@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
 
 @Preview
 @Composable
-fun Cardfun()
+fun Card()
 {   Card(
     modifier= Modifier.width(200.dp)
         .height(250.dp)
