@@ -1,9 +1,10 @@
 package com.example.myjetpackcompose
 
 
-import android.content.Context
+
 import android.os.Bundle
-import android.widget.Toast
+import android.view.WindowManager
+
 
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
@@ -18,86 +19,28 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.myjetpackcompose.composeables.LoginPage
 import com.example.myjetpackcompose.ui.theme.MyJetpackComposeTheme
-
 
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
         setContent {
-
             MyJetpackComposeTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(16.dp)
-                    )
-                    {
-                        Image(
-                            painter = painterResource(R.drawable.logo),
-                            contentDescription = null,
-                            modifier = Modifier
-                                .height(180.dp)
-                                .width(180.dp)
-                                .clip(shape = RoundedCornerShape(4.dp)),
-                        contentScale = ContentScale.Crop
-
-                        )
-                        Card()
-                        
-                        ButtonAction(applicationContext)
-                    }
-
-                }
+                LoginApplication()
             }
         }
     }
-
-}
-
-@Preview
-@Composable
-fun Card()
-{   Card(
-    modifier= Modifier.width(200.dp)
-        .height(250.dp)
-
-) {
-    TextLogin("Login")
-}
-
 }
 
 @Composable
-fun TextLogin(s: String) {
-    Text(s)
+fun  LoginApplication(){
+    LoginPage()
 }
-@Composable
-fun ButtonAction(context: Context) {
-    Button(onClick = {
-        Toast.makeText(
-            context,
-            "Jetpack Compose",
-            Toast.LENGTH_SHORT
-        ).show()
-    }) {
-        Icon(
-            Icons.Filled.Favorite,
-            contentDescription = null,
-            modifier = Modifier.size(ButtonDefaults.IconSize)
-        )
-
-        Text("Like")
-    }
-}
-
-
-
-
